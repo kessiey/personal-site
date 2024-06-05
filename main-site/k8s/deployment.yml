@@ -55,12 +55,12 @@ spec:
   minReplicas: 1
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -71,17 +71,17 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "aws.kessietechinc.com"
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: main-site-service
-            port:
-              number: 80
+    - host: "aws.kessietechinc.com"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: main-site-service
+                port:
+                  number: 80
   tls:
-  - hosts: 
-    - aws.kessietechinc.com
-    secretName: main-site-tls
+    - hosts: 
+        - aws.kessietechinc.com
+      secretName: main-site-tls
